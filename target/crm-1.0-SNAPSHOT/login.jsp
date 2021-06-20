@@ -38,7 +38,24 @@
 			var loginPwd = $.trim($("#loginPwd").val());
 			if(loginAct==""||loginPwd==""){
 				$("#msg").html("账号密码不能为空");
+				return false;
 			}
+			$.ajax({
+				url:"settings/user/login.do",
+				data:{
+
+				},
+				type:"post",
+				dataType:"json",
+				success: function (data) {
+					if(data.success){
+						window.location.href="workbech/index.html"
+					}else{
+						$("#msg").html(data.msg);
+					}
+				}
+
+			})
 		}
 	</script>
 </head>

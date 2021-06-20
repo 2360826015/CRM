@@ -12,5 +12,20 @@
 </head>
 <body>
 
+$.ajax({
+url:'',
+data:{
+
+},
+type:'',
+dataType:'',
+success: function (data) {
+
+}
+
+})
+
+
+
 </body>
 </html>
