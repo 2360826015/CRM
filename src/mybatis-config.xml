@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <properties resource="db.properties" />
+
+    <typeAliases>
+    <!--    起别名：方式一：-->
+    <!--                    为指定类起别名，别名自定义-->
+    <!--                    type:要为那个domain起名  填写包、类名称-->
+    <!--                    alias:自定义的别名
+          <typeAlais type="com.liuwohe.domain.student" alais="stu">-->
+    <!--            方式二：-->
+    <!--                    使用pakage标签批量起别名-->
+    <!--                    别名是mybatis默认取好的，别名为类名（不区分大小写）-->
+    <!--                    name:指定一个包结构，表示在该包下，所有的domain都自动起好了别名。-->
+        <package name="com.liuwohe.domain" />
+    </typeAliases>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+<!--
+            单个注册：resource指定路径
+            <mapper resource="com/liuwohe/dao/studentDao.xml"/>
+         ※ 批量注册：name属性，指向dao层的包，表示在该dao包下，所有的mapper映射文件自动注册
+-->
+        <package name="com.liuwohe.dao"/>
+    </mappers>
+</configuration>
